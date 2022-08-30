@@ -3,13 +3,14 @@
 import serieImg1 from '../../assets/images/content/serie-image-01.png';
 import serieImg2 from '../../assets/images/content/serie-image-02.png';
 import serieImg3 from '../../assets/images/content/serie-image-03.png';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import './home.css';
 import invertedWorld from '../../assets/images/content/inverted-world.png';
 import music1 from '../../assets/musics/normal-world.mpeg';
 import music2 from '../../assets/musics/inverted-world.mpeg';
 import logo from '../../assets/images/banner/logo.svg';
 import logoFooter from '../../assets/images/footer/logo.svg';
+import { AuthContext } from '../../contexts/auth';
 
 
 export default function Home(){
@@ -21,9 +22,12 @@ export default function Home(){
     const [tema, setTema] = useState("light");
     const [music, setMusic] = useState(music1);
 
+    const {DataSave} = useContext(AuthContext);
 
     function handleInscrever(e){
         e.preventDefault();
+
+        DataSave(nome, email, level, personagem);
     }
 
    
